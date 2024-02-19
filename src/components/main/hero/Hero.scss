@@ -1,0 +1,136 @@
+@use '../../../scss/style.scss' as *;
+@use '../../../scss/veriables.scss' as vars;
+@use '../../../scss/mixins.scss' as mix;
+
+.hero{
+    %df{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .hero__main-box{
+        @extend %df;
+        justify-content: space-between;
+        padding: 40px 0px;
+    }
+
+    .hero__image{
+        width: 610px;
+        height: 555px;
+        animation: slideInFromRight 1.2s ease-out;
+    }
+
+    @keyframes slideInFromRight {
+        0% {
+          transform: translateX(50%);
+          opacity: 0;
+        }
+        100% {
+          transform: translateX(0);
+          opacity: 1;
+        }
+      }
+
+    .hero__title{
+        font-size: 48px;
+        margin-bottom: 30px;
+    }
+
+    .hero__content-box{
+     max-width: 527px;
+     animation: slideInFromLeft 1.2s ease-out
+    }
+
+    @keyframes slideInFromLeft {
+        0% {
+          transform: translateX(-50%);
+          opacity: 0;
+        }
+        100% {
+          transform: translateX(0);
+          opacity: 1;
+        }
+      }
+
+    .hero__description{
+        font-size: 16px;
+        margin-bottom: 20px;
+    }
+
+    .hero__buttons-box{
+        @extend %df;
+        justify-content: start;
+        gap: 30px;
+    }
+
+    .hero__button{
+        @include mix.brand-SingUp();
+    }
+
+    .hero__video-box{
+        @extend %df;
+        gap: 5px;
+        cursor: pointer;
+    }
+
+    .hero__video-box a{
+    text-decoration: underline;
+    color: vars.$brand-color;
+    font-weight: 600;
+    }
+
+    @media only screen and (max-width: 1100px) {
+        .hero__image{
+            width: 480px;
+            height: 400px;
+        }
+
+        .hero__content-box{
+            max-width: 450px;
+        }
+
+        .hero__title{
+            font-size: 36px;
+        }
+        .hero__description{
+            font-size: 14px;
+        }
+    }
+
+    @media only screen and (max-width: 850px) {
+        .hero__main-box{
+            flex-direction: column;
+        };
+        .hero__image{
+            width: 480px;
+            height: 400px;
+        }
+
+        .hero__content-box{
+            max-width: 100%;
+            margin-bottom: 80px;
+        }
+
+        .hero__title{
+            font-size: 36px;
+            text-align: center;
+        }
+        .hero__description{
+            font-size: 14px;
+            text-align: center;
+        };
+
+        .hero__buttons-box{
+            justify-content: center;
+        }
+    }
+
+
+    @media only screen and (max-width: 500px) {
+        .hero__image{
+            width: 300px;
+            height: 270px;
+        }
+    }
+}
+

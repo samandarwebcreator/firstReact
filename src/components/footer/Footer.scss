@@ -1,0 +1,119 @@
+@use '../../scss/style.scss' as *;
+@use '../../scss/veriables.scss' as vars;
+@use '../../scss/mixins.scss' as mix;
+
+
+.footer{
+    %df{
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+    }
+    .footer__main-box{
+        width: 100%;
+        @extend %df;
+        background-color: vars.$brand-color;
+        margin-bottom: 40px;
+        padding: 20px;
+        border-radius: 30px;
+    }
+
+    .footer__content-box{
+        max-width: 410px;
+        & h3{
+            color: white;
+            font-size: 28px;
+            margin-bottom: 40px;
+        }
+
+        & button{
+            @include mix.brand-SignIn();
+            width: 140px;
+            border: 2px solid transparent;
+            &:hover{
+                border-color: white;
+            }
+        }
+    }
+
+    .footer__image-box{
+        & img{
+            width: 351px;
+            height: 331px;
+        }
+    }
+
+
+    @media only screen and (max-width: 960px) {
+        .footer__content-box{
+            max-width: 310px;
+            & h3{
+                font-size: 22px;
+                margin-bottom: 30px;
+            }
+        }
+
+        .footer__image-box{
+            & img{
+                width: 251px;
+                height: 231px;
+            }
+        }
+    }
+    @media only screen and (max-width: 700px) {
+
+
+     
+        .footer__content-box{
+            max-width: 210px;
+            & h3{
+                font-size: 16px;
+                margin-bottom: 30px;
+            }
+
+            & button{
+            width: 100px;
+            font-size: 12px;
+        }}
+
+        .footer__image-box{
+            & img{
+                width: 181px;
+                height: 151px;
+            }
+        }
+    }
+    @media only screen and (max-width: 450px) {
+
+        .footer__main-box{
+            flex-direction: column;
+            gap: 60px;
+            align-items: center;
+            padding: 30px 20px;
+        }
+
+     
+        .footer__content-box{
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+            max-width: 210px;
+            & h3{
+                font-size: 16px;
+                margin-bottom: 30px;
+                text-align: center;
+            }
+
+            
+        }
+
+        .footer__image-box{
+            order: -1;
+            & img{
+                width: 281px;
+                height: 251px;
+                margin-right: 20px;
+            }
+        }
+    }
+}

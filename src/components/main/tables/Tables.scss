@@ -1,0 +1,120 @@
+@use '../../../scss/style.scss' as *;
+@use '../../../scss/veriables.scss' as vars;
+@use '../../../scss/mixins.scss' as mix;
+
+
+.tables {
+    %df {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .tables__main-box {
+      position: relative;
+    padding: 80px 0px;
+    width: 100%;
+    flex-direction: column;
+    text-align: center;
+  }
+  
+  .tables__title {
+    font-size: 32px;
+    color: vars.$link-color; 
+    margin-bottom: 5px;
+  }
+  
+  .tables__desc {
+    font-size: 16px;
+    color: vars.$link-color; 
+    margin-bottom: 40px;
+  }
+  
+  .tables__list {
+    width: 100%;
+    list-style: none;
+   @extend %df;
+    justify-content: space-between;
+
+  }
+  
+  .tables__product {
+    width: 300px;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    color: vars.$link-color;
+    z-index: 1000;
+
+
+
+    &:nth-child(2) {
+      background-color: vars.$brand-color; 
+      color: #ddd;
+
+        & button{
+            @include mix.brand-SignIn();
+            border: 2px solid vars.$brand-color;
+            color: vars.$brand-color;
+            &:hover{
+             color: white;
+             border: 2px solid white;
+    
+            }
+            
+        }
+
+    }
+    &-desc {
+      font-size: 18px;
+      margin-bottom: 20px;
+    }
+
+    &-price {
+      font-size: 58px;
+      font-weight: 600;
+      margin-top: -12px;
+    }
+    &-dollar {
+      font-size: 32px;
+      margin-bottom: -10px;
+    }
+  }
+
+.tables__price-box{
+    @extend %df;
+    gap: 10px;
+    align-items: start;
+    margin-top: 20px;
+}
+  .tables__price-wrapper{
+    @extend %df;
+    flex-direction: column;
+    align-items: start;
+  }
+
+  .tables__mothly-text{
+    font-size: 14px;
+  }
+  .tables__product-text {
+    font-size: 16px;
+    margin-bottom: 10px;
+  }
+  
+  .tables__product button {
+    @include mix.brand-SingUp();
+    margin-top: 20px;
+  }
+
+  
+
+  @media only screen and (max-width: 960px) {
+    .tables__list{
+        flex-direction: column;
+        gap: 30px;
+    }
+
+    .tables__product{
+        width: 100%;
+    }
+  }
+}

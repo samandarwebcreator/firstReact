@@ -1,0 +1,158 @@
+@use '../../scss/style' as *;
+@use '../../scss/veriables.scss' as vars;
+@use '../../scss/mixins.scss' as mix;
+
+
+
+.header{
+    animation: slideInFromBottom 1s ease-out; 
+    @keyframes slideInFromBottom {
+        0% {
+          transform: translateY(100%);
+          opacity: 0;
+        }
+        100% {
+          transform: translateY(0);
+          opacity: 1;
+        }
+      }
+      
+%df{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+    .header__main-box{
+        @extend %df;
+        justify-content: space-between;
+        padding: 15px 0px;
+    }
+    .header__logo{
+        width: 250px;
+        height: 34px;
+        margin-bottom: -10px;
+        margin-left: -52px;
+    }
+
+    .header__nav{
+        max-width: 1000px;
+    }
+    .header__list{
+        @extend %df;
+        gap: 30px;
+        list-style: none;
+    }
+
+    .header__list li{
+        border: 2px solid transparent;
+    }
+
+    .header__link{
+        color: vars.$link-color;
+        border-bottom: 1.5px solid transparent;
+        font-size: 14px;
+        transition: all 0.4s ease-in-out;
+
+        &:hover{
+            border-color: vars.$link-color;
+        }
+        
+    }
+
+    .sign__up-btn{
+        @include mix.brand-SingUp()
+    }
+
+    .sign__in-btn{
+        @include mix.brand-SignIn()
+    }
+
+
+    .theme__btn{
+        @include mix.brand-themeBtn()
+    }
+
+
+
+    .header__menu-box, .header__menu{
+        display: none;
+    }
+
+    @media only screen and (max-width: 930px) {
+        .header__main-box {
+            padding: 15px 0px 0px 0px;
+        }
+    
+        .header__nav {
+            display: none; 
+            transition: opacity 0.4s ease;
+        }
+    
+        .header__nav.active {
+            display: block; 
+            opacity: 1; 
+        }
+
+        .header__nav.active .header__list{
+            width: 100%;
+            position: absolute;
+            top: 100px;
+            right: 0;
+            flex-direction: column;
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            animation-name: fadeFromLeftToRight;
+            animation-duration: 1s;
+            z-index: 1;
+            gap: 0px;
+
+        }
+
+        @keyframes fadeFromLeftToRight {
+            from {
+                transform: translateX(100%); 
+                opacity: 0; 
+            }
+            to {
+                transform: translateX(0%); 
+                opacity: 1; 
+            }
+        }
+    
+        .header__logo {
+            margin-left: -55px;
+            transition: margin-left 0.3s ease;
+        }
+    
+        .header__menu-box {
+            display: block;
+        }
+    
+        .header__menu {
+            display: block; 
+            transition: transform 0.3s ease; 
+            border: #ddd;
+            background: transparent;
+        }
+
+        .header__list li{
+            text-align: center;
+            padding: 10px;
+            width: 100%;
+
+            &:hover{
+                border: 2px solid #ddd;
+                border-radius: 5px;
+                background-color: rgba(0, 0, 0, 0.1);
+            }
+        }
+
+        .header__link{
+            &:hover{
+                border: 0px;
+            }
+        }
+    }
+}
